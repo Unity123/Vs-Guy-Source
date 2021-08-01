@@ -11,6 +11,8 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import crashdumper.CrashDumper;
+import crashdumper.SessionData;
 
 class Main extends Sprite
 {
@@ -60,6 +62,11 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
+		var unique_id:String = SessionData.generateID("micdup_"); 
+    	//generates unique id: "fooApp_YYYY-MM-DD_HH'MM'SS_CRASH"
+    
+		var crashDumper = new CrashDumper(unique_id); 
+    	//starts the crashDumper
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 

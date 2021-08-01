@@ -1,0 +1,4 @@
+[178[ [179[ [223[ [216[ |Lunchbox| *0* =0.5= #pixel_normal#  <0.08< >4> (0.2( )5) {0.83{ }5} `hand_textbox` ~clickText~
+:guy: !default! [Pixel Arial 11 Bold[ ]32] *100* =0= +0+ -0- <0< >0> ;0.04; |false| #pixel_normal# ^pixelText^ !#FF3F2021! ?#FFD89494? .. ~~    I'm not feeling so good.
+:bf-pixel: !uneasy! [Pixel Arial 11 Bold[ ]32] *100* =0= +0+ -0- <0< >0> ;0.04; |true| #pixel_normal# ^pixelText^ !#FF3F2021! ?#FFD89494? .. ~~     Wtf I think he's allergic to the mic
+:bf: !default! [Pixel Arial 11 Bold[ ]32] *100* =0= +0+ -0- <0< >0> ;0.04; |true| #pixel_normal# ^pixelText^ !#FF3F2021! ?#FFD89494? .. ~~   To be continued...?

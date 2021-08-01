@@ -37,6 +37,7 @@ import Endless_Substate._endless;
 import Survival_GameOptions._survivalVars;
 import seedyrng.Random;
 import hscript.plus.ScriptState;
+import flash.system.System;
 
 using StringTools;
 using Std;
@@ -941,6 +942,12 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'guy':
+				dad.y += 200;
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'guy-tired':
+				dad.y += 200;
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -1480,7 +1487,149 @@ class PlayState extends MusicBeatState
 
 		accuracyTxt.text = "Accuracy: " + truncateFloat(accuracy, 2) + "%";
 	}
-
+	function outro(?dialogueBox:DialogueBox):Void
+		{
+			beginCutscene = true;
+	
+			/*var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+			black.scrollFactor.set();
+			add(black);
+	
+			var red:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
+			red.scrollFactor.set();
+	
+			var senpaiEvil:FlxSprite = new FlxSprite();
+			senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy', 'week6');
+			senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
+			senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
+			senpaiEvil.scrollFactor.set();
+			senpaiEvil.updateHitbox();
+			senpaiEvil.screenCenter();*/
+	
+			if (SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns' || SONG.song.toLowerCase() == 'winter horrorland')
+			{
+				//remove(black);
+	
+				if (SONG.song.toLowerCase() == 'thorns')
+				{
+					//add(red);
+				}
+			}
+	
+			new FlxTimer().start(0.3, function(tmr:FlxTimer)
+			{
+				/*black.alpha -= 0.15;
+	
+				if (black.alpha > 0)
+				{
+					tmr.reset(0.3);
+				}
+				else*/
+				{
+					if (dialogueBox != null)
+					{
+						inCutscene = true;
+	
+						if (SONG.song.toLowerCase() == 'thorns')
+						{
+							//add(senpaiEvil);
+							//senpaiEvil.alpha = 0;
+							new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
+							{
+								//senpaiEvil.alpha += 0.15;
+								/*if (senpaiEvil.alpha < 1)
+								{
+									swagTimer.reset();
+								}*/
+								//else
+								{
+									//senpaiEvil.animation.play('idle');
+									FlxG.sound.play(Paths.sound('Senpai_Dies', 'shared'), _variables.svolume / 100, false, null, true, function()
+									{
+										//remove(senpaiEvil);
+										//remove(red);
+										FlxG.camera.fade(FlxColor.WHITE, 0.01, true, function()
+										{
+											add(dialogueBox);
+										}, true);
+									});
+									new FlxTimer().start(3.2, function(deadTime:FlxTimer)
+									{
+										FlxG.camera.fade(FlxColor.WHITE, 1.6, false);
+									});
+								}
+							});
+						}
+						else
+						{
+							add(dialogueBox);
+						}
+					}
+					else
+					{
+						System.exit(0);
+						if (storyPlaylist.length <= 0)
+							{
+								transIn = FlxTransitionableState.defaultTransIn;
+								transOut = FlxTransitionableState.defaultTransOut;
+			
+								// if ()
+								MenuWeek.weekUnlocked[Std.int(Math.min(storyWeek + 1, MenuWeek.weekUnlocked.length - 1))] = true;
+			
+								if (SONG.validScore && !cheated && !_variables.botplay)
+								{
+									NGio.unlockMedal(60961);
+									Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+								}
+			
+								FlxG.save.data.weekUnlocked = MenuWeek.weekUnlocked;
+								FlxG.save.flush();
+			
+								new FlxTimer().start(0.1, function(tmr:FlxTimer)
+								{
+									camHUD.alpha -= 1 / 10;
+									camNOTES.alpha -= 1 / 10;
+									camSus.alpha -= 1 / 10;
+									camNOTEHUD.angle -= 1 / 10;
+								}, 10);
+			
+								openSubState(new RankingSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+							}
+							else
+							{
+								if (SONG.song.toLowerCase() == 'eggnog')
+								{
+									var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+										-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+									blackShit.scrollFactor.set();
+									add(blackShit);
+									camHUD.visible = false;
+									camNOTES.visible = false;
+									camSus.visible = false;
+									camNOTEHUD.visible = false;
+			
+									FlxG.sound.play(Paths.sound('Lights_Shut_off', 'shared'), _variables.svolume / 100);
+								}
+			
+								FlxTransitionableState.skipNextTransIn = true;
+								FlxTransitionableState.skipNextTransOut = true;
+								prevCamFollow = camFollow;
+								openSubState(new RankingSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+			
+								new FlxTimer().start(0.1, function(tmr:FlxTimer)
+								{
+									camHUD.alpha -= 1 / 10;
+									camNOTES.alpha -= 1 / 10;
+									camSus.alpha -= 1 / 10;
+									camNOTEHUD.alpha -= 1 / 10;
+								}, 10);
+							}
+					}
+	
+					//remove(black);
+				}
+			});
+		}
 	function schoolIntro(?dialogueBox:DialogueBox):Void
 	{
 		beginCutscene = true;
@@ -3779,9 +3928,16 @@ class PlayState extends MusicBeatState
 		{
 			case "Story":
 				campaignScore += songScore;
-
 				storyPlaylist.remove(storyPlaylist[0]);
-
+				if (SONG.song.toLowerCase() == "mushroom wars") {
+					dialogue = File.getContent(Paths.txt(SONG.song.toLowerCase() + '/dialogue-end')).trim().split('\n');
+					doof = new DialogueBox(false, dialogue);
+					doof.scrollFactor.set();
+					doof.finishThing = startCountdown;
+					doof.cameras = [camPAUSE];
+					outro(doof);
+					return;
+				}
 				if (storyPlaylist.length <= 0)
 				{
 					transIn = FlxTransitionableState.defaultTransIn;
@@ -5212,7 +5368,7 @@ class PlayState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-
+		//FlxG.log.add(curSong);
 		if (generatedMusic)
 		{
 			notes.sort(FlxSort.byY, FlxSort.DESCENDING);
@@ -5243,6 +5399,17 @@ class PlayState extends MusicBeatState
 			// Dad doesnt interupt his own notes
 			/*if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
 				dad.dance(); DUMB!!!!!!! */
+			if (curBeat == 70 && curSong.toLowerCase() == 'mushroom wars') {
+				FlxG.sound.play(Paths.sound('ANGRY', 'shared'), _variables.svolume / 100);
+				remove(dad);
+				dad = new Character(100, 300, 'guy-tired');
+				add(dad);
+				/*var oldY = iconP2.y;
+				remove(iconP2);
+				iconP2 = new HealthIcon('guy-tired', false);
+				iconP2.y = oldY;
+				add(iconP2);*/
+			}
 		}
 
 		// THIS SHIT DOES NOT WORK PROPERLY!
@@ -5361,7 +5528,7 @@ class PlayState extends MusicBeatState
 			hittingNote = false;
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing"))
+		if (dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith("sing"))
 		{
 			dad.dance(); // ill make this better later i promise
 			hittingNote = false;

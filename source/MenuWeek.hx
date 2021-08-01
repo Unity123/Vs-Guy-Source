@@ -26,20 +26,21 @@ class MenuWeek extends MusicBeatState
 	var weekData:Array<Dynamic> = [
 		['Tutorial'],
 		['Bopeebo', 'Fresh', 'Dadbattle'],
-		['Spookeez', 'South', "Monster"],
+		['Spookeez', 'South'],
 		['Pico', 'Philly Nice', "Blammed"],
 		['Satin Panties', "High", "Milf"],
-		['Cocoa', 'Eggnog', 'Winter Horrorland'],
-		['Senpai', 'Roses', 'Thorns']
+		['Cocoa', 'Eggnog'],
+		['Senpai', 'Roses', 'Thorns'],
+		['Mushroom Wars']
 	];
 
 	var curWeekData:Array<Dynamic> = [];
 
 	public static var curDifficulty:Int = 2;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true];
 
-	var weekCharacters:Array<String> = ["gf", "dad", "spooky", "pico", "mom", "parents-christmas", "senpai"];
+	var weekCharacters:Array<String> = ["gf", "dad", "spooky", "pico", "mom", "parents-christmas", "senpai", "guy"];
 
 	var weekNames:Array<String> = [
 		"How to FUNK",
@@ -48,7 +49,8 @@ class MenuWeek extends MusicBeatState
 		"PICO",
 		"MOMMY MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"hating simulator ft. moawling",
+		"mushroom dude guy: the game"
 	];
 
 	var txtWeekTitle:FlxText;
@@ -443,7 +445,7 @@ class MenuWeek extends MusicBeatState
 
 	function updateText()
 	{
-		txtTracklist.text = "INCLUDES FAMOUS\n TRACKS LIKE:\n\n";
+		txtTracklist.text = "FEATURES EPIC\n SONGS INCLUDING:\n\n";
 
 		var stringThing:Array<String> = weekData[curWeek];
 
@@ -479,6 +481,8 @@ class MenuWeek extends MusicBeatState
 				characterUI.offset.set(67, 47);
 			case 'senpai':
 				characterUI.offset.set(46, 4);
+			case 'guy':
+				characterUI.offset.set(-100, 0);
 		}
 
 		#if !switch

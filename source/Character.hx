@@ -407,6 +407,33 @@ class Character extends FlxSprite
 				loadOffsetFile('parents-christmas');
 
 				playAnim('idle');
+			case 'guy':
+				// DAD ANIMATION LOADING CODE
+				frames = Paths.getSparrowAtlas('characters/Guy', 'shared');
+				animation.addByPrefix('idle', "GuyIdle", 24, false);
+				animation.addByPrefix('singUP', "GuyUp", 24, false);
+				animation.addByPrefix('singDOWN', "GuyDown", 24, false);
+				animation.addByPrefix('singLEFT', "GuyLeft", 24, false);
+				animation.addByPrefix('singRIGHT', "GuyRight", 24, false);
+				addOffset('idle');
+				addOffset('singUP');
+				addOffset('singDOWN');
+				addOffset('singLEFT');
+				addOffset('singRIGHT');
+				playAnim('idle');
+			case 'guy-tired':
+				frames = Paths.getSparrowAtlas('characters/GuyTired', 'shared');
+				animation.addByPrefix('idle', "GuyIdle", 24, false);
+				animation.addByPrefix('singUP', "GuyUp", 24, false);
+				animation.addByPrefix('singDOWN', "GuyDown", 24, false);
+				animation.addByPrefix('singLEFT', "GuyLeft", 24, false);
+				animation.addByPrefix('singRIGHT', "GuyRight", 24, false);
+				addOffset('idle');
+				addOffset('singUP');
+				addOffset('singDOWN');
+				addOffset('singLEFT');
+				addOffset('singRIGHT');
+				playAnim('idle');
 		}
 
 		dance();
@@ -438,7 +465,7 @@ class Character extends FlxSprite
 	{
 		if (!isPlayer)
 		{
-			if (animation.curAnim.name.startsWith('sing'))
+			if (animation.curAnim != null && animation.curAnim.name.startsWith('sing'))
 			{
 				holdTimer += elapsed;
 			}

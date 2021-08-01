@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Mic'd Up Engine" file="Funkin MU" packageName="com.verwex.funkinMU" package="com.verwex.funkMU" main="Main" version="MU 2.0.3" company="Verwex" />
+	<app title="Friday Night Funkin': Vs Guy" file="Funkin MU" packageName="com.verwex.funkinMU" package="com.verwex.funkMU" main="Main" version="MU 2.0.3" company="Verwex" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -115,6 +115,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
 	<haxelib name="hscript-plus" />
+	<haxelib name="crashdumper"/>
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
@@ -125,6 +126,7 @@
 	<haxelib name="seedyrng"/> <!--haxelib install seedyrng-->
 	<haxelib name="random"/> <!--haxelib install random-->
 	<haxelib name="systools" />
+	<haxelib name="hxcpp-debug-server" if="desktop"/>
 	<ndll name="systools" haxelib="systools" />
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
@@ -159,7 +161,8 @@
 
 	<!--Disable the Flixel core focus lost screen-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
-
+	<haxedef name="HXCPP_STACK_LINE" />  <!--if you want line numbers-->
+	<haxedef name="HXCPP_STACK_TRACE"/>  <!--if you want stack traces-->
 	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
