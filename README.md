@@ -134,6 +134,7 @@ You will also need to install a couple things that involve Gits. To do this, you
 6. Optional: - Run `haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons` to update Flixel-Addons. This fixes the transition bug for zoomed out stage cameras.
 7. Optional: - Run `haxelib git random https://github.com/jasononeil/hxrandom` to make random more random.
 8. Run `haxelib git systools https://github.com/haya3218/systools` to install systools and run `lime rebuild systools windows`. This is required for system edits, if defender decides to say "fuck u virus" then ignore it. **USE HAYA'S REPO TO MAKE IT WORK OR ITLL THROW A COMPILER ERROR.**
+9. Run `haxelib git crashdumper https://github.com/larsiusprime/crashdumper`
 
 You should have everything ready for compiling the mod! Follow the guide below to continue!
 
